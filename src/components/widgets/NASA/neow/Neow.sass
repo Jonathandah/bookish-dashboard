@@ -1,0 +1,64 @@
+.Neow
+    position: relative
+    background: black
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    .Neow__container--row
+        position: relative
+        display: flex
+        flex-direction: row
+        align-items: center
+        margin: 5%
+        .Neow__earth
+            width: 80px
+            height: 80px
+        .Neow__meteor--fire
+            z-index: 100
+            position: relative
+            width: 90px
+            height: 90px
+            animation: shake
+            animation-iteration-count: infinite
+            animation-duration: 1s
+            right: 20px
+        .Neow__moon
+            width: 30px
+            height: 30px
+            position: absolute
+            animation-name: myOrbit
+            animation-iteration-count: infinite
+            animation-duration: 20s
+            animation-timing-function: linear
+    .Neow__fact-board
+        display: flex
+        flex-direction: column
+        align-items: center
+        font-family: 'Press Start 2P', cursive
+        border: 1px white
+        border-style: dashed
+        height: 80%
+        width: 33%
+        .Fact-board__title
+            color: #00ccff
+
+
+    @keyframes shake
+        10%, 90%
+            transform: translate3d(-1px, 0, 0)
+        20%, 80%
+            transform: translate3d(2px, 0, 0)
+        30%, 50%, 70%
+            transform: translate3d(-1px, 0, 0)
+        40%, 60%
+            transform: translate3d(2px, 0, 0)
+  
+
+
+    @keyframes myOrbit 
+        from 
+            transform: rotate(0deg) translateX(200%) rotate(0deg)
+        to    
+            transform: rotate(360deg) translateX(200%) rotate(-360deg)
+
+
