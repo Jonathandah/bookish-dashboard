@@ -55,7 +55,41 @@
             display: flex
             justify-content: space-between
             flex-direction: column
+        .Error
+            position: relative
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-direction: column
+            animation: blinker 2s infinite
+        .Error__smiley
+            position: relative
           
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            width: 80px
+            height: 60px
+          
+            .part1
+                transform: rotate(90deg)
+                position: absolute
+                top: 0px
+                font-size: 40px
+                left: 16px
+       
+              
+            .part12
+                transform: rotate(90deg)
+                left: 16px
+                position: absolute
+                top: 20px
+                font-size: 40px
+            
+         
+           
+   
 
 @media screen and (max-device-width: 1540px) 
     .Neow
@@ -83,3 +117,11 @@
         transform: rotate(0deg) translateX(200%) rotate(0deg)
     to    
         transform: rotate(360deg) translateX(200%) rotate(-360deg)
+
+@keyframes blinker 
+    0%
+        opacity: 0
+    49%
+        opacity: 0
+    50%
+        opacity: 1

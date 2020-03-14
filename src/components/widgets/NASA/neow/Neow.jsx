@@ -9,8 +9,9 @@ const axios = require('axios');
 const moment = require('moment');
 const DoubleArrow = require('../../../../global/components/arrows/DoubleArrow');
 const FactItem = require('./FactItem');
+const Error_sad_smiley = require('../../../../global/components/error/Error_sad_smiley');
 
-let makeRequest = updateNeowData => {
+let makeRequest = (updateNeowData, updateError) => {
   axios
     .get(
       `https://api.nasa.gov/neo/rest/v1/feed?start_date=${moment().format(
@@ -37,19 +38,21 @@ let makeRequest = updateNeowData => {
     })
     .catch(error => {
       console.log(error);
+      updateError(true);
     });
 };
 
 function Neow({ size }) {
   const [neowData, updateNeowData] = useState(false);
+  const [error, updateError] = useState(true);
   useEffect(() => {
     let interval;
     if (!interval) {
-      makeRequest(updateNeowData);
+      makeRequest(updateNeowData, updateError);
     }
     clearInterval(interval);
     interval = setInterval(() => {
-      makeRequest(updateNeowData);
+      makeRequest(updateNeowData, updateError);
     }, 1800000);
   }, []);
 
@@ -63,7 +66,9 @@ function Neow({ size }) {
       </div>
       <div className="Neow__fact-board">
         <h4 className="Fact-board__title">Todays NEOW</h4>
-        {neowData ? (
+        {error ? (
+          <Error_sad_smiley className="Fact-board__error" color={'#00ccff'} />
+        ) : neowData ? (
           <ul className="Fact-board__list">
             <FactItem title={'Name'} text={neowData.name} />
             <FactItem
