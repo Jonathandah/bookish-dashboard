@@ -1,16 +1,31 @@
 .Neow
+    font-family: 'Press Start 2P', cursive
     position: relative
     background: black
     display: flex
     justify-content: flex-start
     align-items: center
     margin: 5px
+    overflow: hidden
     .Neow__container--row
         position: relative
         display: flex
         flex-direction: row
         align-items: center
         margin: 5%
+        .Neow__container--column
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-direction: column
+            position: relative
+            .Neow__distance
+                color: white
+                position: absolute
+                font-size: 9px
+                left: 30px
+                top: 70px
+                white-space: nowrap
         .Neow__earth
             width: 80px
             height: 80px
@@ -37,7 +52,6 @@
         flex-direction: column
         align-items: center
         justify-content: flex-start
-        font-family: 'Press Start 2P', cursive
         border: 1px white
         border-style: dashed
         height: 80%
@@ -56,36 +70,9 @@
             justify-content: space-between
             flex-direction: column
         .Error
-            position: relative
-            display: flex
-            justify-content: center
-            align-items: center
-            flex-direction: column
             animation: blinker 2s infinite
-        .Error__smiley
-            position: relative
-          
-            display: flex
-            flex-direction: column
-            align-items: center
-            justify-content: center
-            width: 80px
-            height: 60px
-          
-            .part1
-                transform: rotate(90deg)
-                position: absolute
-                top: 0px
-                font-size: 40px
-                left: 16px
-       
-              
-            .part12
-                transform: rotate(90deg)
-                left: 16px
-                position: absolute
-                top: 20px
-                font-size: 40px
+            top: 50px
+
             
          
            

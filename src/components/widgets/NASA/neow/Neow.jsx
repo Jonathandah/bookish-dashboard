@@ -42,9 +42,13 @@ let makeRequest = (updateNeowData, updateError) => {
     });
 };
 
+function numberWithSpaces(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
 function Neow({ size }) {
   const [neowData, updateNeowData] = useState(false);
-  const [error, updateError] = useState(true);
+  const [error, updateError] = useState(false);
   useEffect(() => {
     let interval;
     if (!interval) {
@@ -60,7 +64,20 @@ function Neow({ size }) {
     <div className="Neow" style={size}>
       <div className="Neow__container--row">
         <img className="Neow__earth" alt="" src={Earth} />
-        <DoubleArrow />
+        <div className="Neow__container--column">
+          <DoubleArrow />
+          <p className="Neow__distance">
+            {neowData
+              ? numberWithSpaces(
+                  Math.round(
+                    neowData.close_approach_data[0].miss_distance.kilometers
+                  )
+                )
+              : null}{' '}
+            km
+          </p>
+        </div>
+
         <img className="Neow__meteor--fire" alt="" src={Meteor_fire} />
         <img className="Neow__moon" alt="" src={Moon} />
       </div>
